@@ -1,0 +1,14 @@
+<h1>Editing story</h1>
+
+<%= render 'form' %>
+
+<div id="storiesList">
+	<% for phrase in @story.phrases %>
+	<div id="phrase-<%= phrase.id %>">
+		<%= render :partial => 'phrases/phrase', :object => phrase, :locals => { :removable => true } %>
+	</div>
+	<% end %>
+</div>
+
+<%= link_to 'Show', language_story_path(@story) %> |
+<%= link_to 'Back', language_stories_path %>

@@ -1,0 +1,12 @@
+<h2><%= @language %></h2>
+
+<p><%= @language.blurb %></p>
+
+<p>WebLinDa contains the following recorded data:
+	<ul>
+		<li><%= link_to "#{pluralize(Morpheme.count, "morpheme")}", language_morphemes_path(params[:id]) %></li>
+		<li><%= link_to "#{pluralize(Lexeme.count, "lexeme")}", language_lexemes_path(params[:id]) %></li>
+		<li><%= link_to "#{pluralize(Phrase.count, "phrase")}", language_phrases_path(params[:id]) %></li>
+		<li><%= link_to "#{pluralize(Story.count, "story")}", language_stories_path(params[:id]) %></li>
+	</ul>
+</p>

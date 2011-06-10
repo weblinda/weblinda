@@ -1,0 +1,26 @@
+EASY
+----
+font-face dulios sil (license?)
+make pretty--Grammaticality judgments on phrases
+audio recordings for lexemes, phrases, stories
+new buttons HTML fancy
+keep working on adding delete phrase in story
+put some user stuff in cookie, remove secret token from source control/reset it
+
+HARD
+----
+proper restifying /german/lexemes /german/lexemes/show/1 - http://weblog.jamisbuck.org/2007/2/5/nesting-resources
+caching (relies heavily on above to get it right)
+Texts
+Search - LIKE and Levensthein (https://github.com/binarylogic/searchlogic)
+levensthein distance
+Admin - https://github.com/sferik/rails_admin
+
+Levensthein
+-----------
+http://lib.bioinfo.pl/blid:921
+http://rubyforge.org/frs/?group_id=6257
+
+Fulltext postgres
+-----------------
+https://github.com/tenderlove/texticle#readme

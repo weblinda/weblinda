@@ -1,0 +1,2 @@
+$('#addableStories').html('<%= escape_javascript render(@allPhrases) %>');
+$('#paginator').html('<%= escape_javascript(paginate(@allPhrases, :remote => true).to_s) %>');

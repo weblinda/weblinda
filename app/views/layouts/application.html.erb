@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= yield_for(:title, 'WebLinDa') %></title>
+		<%= include_stylesheets :main, :media => 'all' %>
+		<%= include_javascripts :main %>
+		<%= csrf_meta_tag %>
+	</head>
+	
+	<body>
+		
+		<header>
+			<h1><a href="/">WebLinDa</a></h1>
+			
+			<% if current_user %>
+				<span>logged in: <%= current_user.login %> (<%= link_to 'logout', logout_path %>)</span>
+			<% else %>
+				<span><%= link_to 'login', login_path %></span>
+			<% end %>
+			
+			<% if flash[:notice] then %>
+			<span id="notice"><%= flash[:notice] %></span>
+			<% end %>
+		</header>
+		
+		<nav>
+			<section id="links">
+				<ul>
+					<% if params[:controller] == 'language' || params[:language_id] then %>
+					
+					<li><%= active_link_to 'Morphemes', language_morphemes_path(params[:id]) %></li>
+					<li><%= active_link_to 'Lexemes', language_lexemes_path(params[:id]) %></li>
+					<li><%= active_link_to 'Phrases', language_phrases_path(params[:id]) %></li>
+					<li><%= active_link_to 'Stories', language_stories_path(params[:id]) %></li>
+					<li><%= link_to 'Settings', current_user %></li>
+					
+					<% else %>
+					
+					<li><%= link_to 'Languages', '/' %>
+					<li><%= link_to 'Settings', current_user %></li>
+					
+					<% end %>
+				</ul>
+			</section>
+
+			<section id="search">
+				<% if params[:controller] == 'language' || params[:language_id] then %>
+					<%= form_tag language_search_path(params[:id]), :method => 'get' do %>
+						<%= search_field_tag :q, nil, { :placeholder => 'Search' } %>
+					<% end %>
+				<% else %>
+				<% end %>
+			</section>
+		</nav>
+
+		<article id="main">
+			<%= yield %>
+		</article>
+
+		<footer>
+			Copyright &copy; 2007 by Nick Pendar, Iowa State University and 2009&ndash;2011 by Michael Tremel, University of Arizona
+		</footer>
+	</body>
+</html>

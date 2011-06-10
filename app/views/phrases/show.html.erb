@@ -1,0 +1,26 @@
+<%= render @phrase %>
+
+<% if @phrase.free_translation then %>
+<p>
+	Free Translation: <%= @phrase.free_translation %>
+</p>
+<% end %>
+
+<% if @phrase.judgment then %>
+<p>
+	Grammaticality Judgment: <%= @phrase.judgment %>
+</p>
+<% end %>
+
+<% if @phrase.stories.any? %>
+<p>This phrase is currently tagged in the following phrases:</p>
+<ul>
+<% for story in @phrase.stories %>
+	<li><%= link_to story.name, language_story_path(story.language, story) %></li>
+<% end %>
+</ul>
+<% end %>
+
+<%= link_to 'Edit', edit_language_phrase_path(@phrase) %> |
+<%= link_to 'Destroy', language_phrase_path(@phrase), :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'Back', language_phrases_path %>

@@ -1,0 +1,18 @@
+<h1>Editing phrase</h1>
+
+<%= form_for([:language, @phrase]) do |f| %>
+
+	<%= f.label :judgment, 'Grammaticality Judgment' %>
+	<%= f.text_field :judgment %>
+	<br />
+	
+	<%= f.label :free_translation, 'Free Translation' %>
+	<%= f.text_field :free_translation %>
+	<br />
+	
+	<%= f.submit 'Edit Phrase' %>
+
+<% end %>
+
+<%= link_to 'Show', language_phrase_path(@phrase) %> |
+<%= link_to 'Back', language_phrases_path %>

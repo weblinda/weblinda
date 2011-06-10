@@ -1,0 +1,42 @@
+<% 
+taggable = false if local_assigns[:taggable].nil?
+removable = false if local_assigns[:removable].nil?
+%>
+
+<table id="entry-<%= phrase.id %>" class="<%= phraseClass(taggable) %>">
+	<%= hidden_field_tag 'phrase_id', phrase.id %>
+	<tr>
+		<td>orthography</td>
+		<% phrase.lexemes.each do |lexeme| %>
+		<td><%= link_to lexeme.morphemes.map(&:orthography).join('') || '', language_lexeme_path(lexeme.language, lexeme) %></td>
+		<% end %>
+	</tr>
+	
+	<tr>
+		<td>lexical entry</td>
+		<% phrase.lexemes.each do |lexeme| %>
+		<td><%= link_to lexeme.morphemes.map(&:lexical_entry).join('-') || '', language_lexeme_path(lexeme.language, lexeme) %></td>
+		<% end %>
+	</tr>
+	
+	<tr>
+		<td>gloss</td>
+		<% phrase.lexemes.each do |lexeme| %>
+		<td><%= link_to lexeme.morphemes.map(&:gloss).join('-'), language_lexeme_path(lexeme.language, lexeme) %></td>
+		<% end %>
+	</tr>
+
+	<tr>
+		<td>translation</td>
+		<% phrase.lexemes.each do |lexeme| %>
+		<td><%= link_to lexeme.morphemes.map(&:translation).join(''), language_lexeme_path(lexeme.language, lexeme) %></td>
+		<% end %>
+	</tr>
+	
+	<% if removable then %>
+	<tr>
+		<td></td>
+		<td><a href="/stories/remove?story_id=<%= @story.id %>&amp;phrase_id=<%= phrase.id %>" class="removePhraseFromStory">remove from story</a></td>
+	</tr>
+	<% end %>
+</table>

@@ -1,0 +1,23 @@
+<p>
+  <b>Orthography:</b>
+  <%= @morpheme.orthography %>
+</p>
+
+<p>
+	<b>Lexical entry:</b>
+	<%= @morpheme.lexical_entry %>
+</p>
+
+<p>
+  <b>Gloss:</b>
+  <%= @morpheme.gloss %>
+</p>
+
+<p>
+  <b>Translation:</b>
+  <%= @morpheme.translation %>
+</p>
+
+
+<%= link_to 'Edit', edit_language_morpheme_path(@morpheme) %> |
+<%= link_to 'Back', language_morphemes_path %>

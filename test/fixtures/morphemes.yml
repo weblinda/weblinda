@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  language_id: 1
+  orthography: MyString
+  gloss: MyString
+  translation: MyString
+
+two:
+  language_id: 1
+  orthography: MyString
+  gloss: MyString
+  translation: MyString

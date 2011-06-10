@@ -1,0 +1,30 @@
+<p>Story: <%= @story.name %></p>
+
+<% if @story.phrases.empty? %>
+<p>
+	There aren't any phrases associated with this story. Please tag a few phrases, just by clicking!
+</p>	
+
+<div id="addableStories">
+	<% for phrase in @allPhrases %>
+	<div id="phrase-<%= phrase.id %>">
+		<%= render :partial => 'phrases/phrase', :object => phrase, :locals => { :taggable => true } %>
+	</div>
+	<% end %>
+</div>
+<div id="paginator">
+	<%= paginate @allPhrases, :remote => true %>
+</div>
+
+<% else %>
+
+<% for phrase in @story.phrases %>
+<div id="phrase-<%= phrase.id %>">
+	<%= render :partial => 'phrases/phrase', :object => phrase %>
+</div>
+<% end %>
+
+<% end %>
+
+<%= link_to 'Edit', edit_language_story_path(@story) %> |
+<%= link_to 'Back', language_stories_path %>

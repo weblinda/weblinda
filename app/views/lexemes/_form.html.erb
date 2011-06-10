@@ -1,0 +1,70 @@
+<p>Enter you lexeme below making sure to mark morpheme boundaries in all fields with a hyphen. WebLinDa will consider the lexeme monomorphemic if no hyphens are added.  All lines of the gloss must be equally marked for morpheme and word boundaries.</p>
+
+<%= form_for([:language, @lexeme]) do |f| %>
+	<% if @lexeme.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@lexeme.errors.count, "error") %> prohibited this lexeme from being saved:</h2>
+
+			<ul>
+				<% @lexeme.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+	<%= label_tag :orthography, 'Orthography' %>:
+	<%= text_field_tag :orthography, @lexeme.morphemes.map(&:orthography).join('-') %><br />
+	
+	<%= label_tag :lexical_entry, 'Lexical Entry' %>
+	<%= text_field_tag :lexical_entry, @lexeme.morphemes.map(&:lexical_entry).join('-') %><br />
+
+	<%= label_tag :gloss, 'Gloss' %>:
+	<%= text_field_tag :gloss, @lexeme.morphemes.map(&:gloss).join('-') %><br />
+
+	<%= label_tag :translation, 'Translation' %>:
+	<%= text_field_tag :translation, @lexeme.morphemes.map(&:translation).join('-') %><br />	
+
+	<br />
+	<%= f.label :free_translation, 'Free Translation' %>
+	<%= f.text_field :free_translation %><br />
+	
+	<%= f.label :notes, 'Notes' %>
+	<%= f.text_field :notes %><br />
+	<br />
+	
+	<table>
+		<tr>
+			<td><%= f.label :pos, 'Part of Speech' %></td>
+			<td><%= f.select :pos_id, Pos.all.collect { |p| [p.value, p.id] } %></td>
+
+			<td><%= f.label :tense, 'Tense' %></td>
+			<td><%= f.select :tense_id, Tense.all.collect { |p| [p.value, p.id] } %></td>
+
+			<td><%= f.label :aspect, 'Aspect' %></td>
+			<td><%= f.select :aspect_id, Aspect.all.collect { |p| [p.value, p.id] } %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :mood, 'Mood' %></td>
+			<td><%= f.select :mood_id, Mood.all.collect { |p| [p.value, p.id] } %></td>
+			
+			<td><%= f.label :voice, 'Voice' %></td>
+			<td><%= f.select :voice_id, Voice.all.collect { |p| [p.value, p.id] } %></td>
+			
+			<td><%= f.label :person, 'Person' %></td>
+			<td><%= f.select :person_id, Person.all.collect { |p| [p.value, p.id] } %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :number, 'Number' %></td>
+			<td><%= f.select :number_id, Number.all.collect { |p| [p.value, p.id] } %></td>
+			
+			<td><%= f.label :gender, 'Gender' %></td>
+			<td><%= f.select :gender_id, Gender.all.collect { |p| [p.value, p.id] } %></td>
+			
+			<td><%= f.label :case, 'Case' %></td>
+			<td><%= f.select :case_id, Case.all.collect { |p| [p.value, p.id] } %></td>
+		</tr>
+	</table>
+	
+	<%= f.submit %>
+<% end %>

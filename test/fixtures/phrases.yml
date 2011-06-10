@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ortography: MyString
+  analysis: MyString
+  gloss: MyString
+  translation: MyString
+
+two:
+  ortography: MyString
+  analysis: MyString
+  gloss: MyString
+  translation: MyString
