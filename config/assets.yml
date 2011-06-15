@@ -1,0 +1,13 @@
+embed_assets: on
+
+javascripts:
+  main:
+    - public/javascripts/jquery/jquery.js  
+    - public/javascripts/jquery-ui/jquery-ui.min.js  
+    - public/javascripts/jquery-ui.touch-punch/jquery-ui.touch-punch.js  
+    - public/javascripts/rails.js
+    - public/javascripts/application.js
+
+stylesheets:
+  main:
+    - public/stylesheets/screen.css
